@@ -9,14 +9,22 @@ public class Consumer extends User{
   }
 
   @Override
-  public void register() {}
+  public void register() {
+
+  }
 
   @Override
-  public void login() {}
+  public void login() {
+
+  }
 
   @Override
-  public void logout() {}
+  public void logout() {
 
-  public void purchaseFoodItem(FoodItem foodItem) {}
+  }
+
+  public void purchaseFoodItem(FoodItem foodItem) {
+    
+  }
 
 }

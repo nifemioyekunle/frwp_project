@@ -9,13 +9,21 @@ public class CharitableOrganization extends User {
   }
 
   @Override
-  public void register() {}
+  public void register() {
+
+  }
 
   @Override
-  public void login() {}
+  public void login() {
+
+  }
 
   @Override
-  public void logout() {}
+  public void logout() {
 
-  public void claimFoodItem(FoodItem foodItem) {}
+  }
+
+  public void claimFoodItem(FoodItem foodItem) {
+    
+  }
 }

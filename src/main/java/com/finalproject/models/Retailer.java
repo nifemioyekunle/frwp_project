@@ -14,20 +14,30 @@ public class Retailer extends User{
   }
 
   @Override
-  public void register() {}
+  public void register() {
+
+  }
 
   @Override
-  public void login() {}
+  public void login() {
+
+  }
 
   @Override
-  public void logout() {}
+  public void logout() {
+
+  }
 
   public void addFoodItem(FoodItem foodItem) {
     inventory.add(foodItem);
   }
 
-  public void updateFoodItem(FoodItem foodItem) {}
+  public void updateFoodItem(FoodItem foodItem) {
 
-  public void listSurplusFoodItems() {}
+  }
+
+  public void listSurplusFoodItems() {
+    
+  }
 
 }

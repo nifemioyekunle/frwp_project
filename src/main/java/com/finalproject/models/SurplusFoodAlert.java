@@ -4,12 +4,12 @@ public class SurplusFoodAlert {
   private int id;
   private int userId;
   private String location;
-  private String communicationMethod;
+  private CommunicationMethod communicationMethod;
   private String foodPreferences;
 
   public SurplusFoodAlert() {}
 
-  public SurplusFoodAlert(int id, int userId, String location, String communicationMethod, String foodPreferences) {  
+  public SurplusFoodAlert(int id, int userId, String location, CommunicationMethod communicationMethod, String foodPreferences) {  
     this.id = id;
     this.userId = userId;
     this.location = location;
@@ -41,11 +41,11 @@ public class SurplusFoodAlert {
     this.location = location;
   }
 
-  public String getCommunicationMethod() {  
+  public CommunicationMethod getCommunicationMethod() {  
     return communicationMethod;
   }
 
-  public void setCommunicationMethod(String communicationMethod) {
+  public void setCommunicationMethod(CommunicationMethod communicationMethod) {
     this.communicationMethod = communicationMethod;
   }
   

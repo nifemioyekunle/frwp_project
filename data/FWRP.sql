@@ -1,0 +1,34 @@
+/**
+* Author: FWRP group
+*/
+
+-- * DROP DATABASE IF EXISTS FWRP;
+--* CREATE DATABASE FWRP;
+--* USE FWRP;
+
+CREATE TABLE Users (
+  userId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(50) NOT NULL,
+  userType ENUM('RETAILER', 'CONSUMER', 'CHARITABLE_ORGANIZATION') NOT NULL
+);
+
+CREATE TABLE FoodItems (
+  foodItemId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  retailerId INT,
+  name VARCHAR(50) NOT NULL,
+  quantity INT NOT NULL,
+  expirationDate DATE NOT NULL,
+  surplusStatus BOOLEAN NOT NULL
+  FOREIGN KEY (retailerId) REFERENCES Users(userId)
+);
+
+CREATE TABLE SurplusFoodAlerts (
+  surplusFoodAlertId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  userId INT,
+  location VARCHAR(50) NOT NULL,
+  communicationMethod VARCHAR(50) NOT NULL,
+  foodPreferences VARCHAR(75) NOT NULL
+  FOREIGN KEY (userId) REFERENCES Users(userId)
+);

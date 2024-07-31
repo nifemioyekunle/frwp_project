@@ -2,7 +2,7 @@ package com.finalproject.models;
 
 public abstract class User {
 
-  private int id;
+  private int userId;
   private String name;
   private String email;
   private String password;
@@ -10,20 +10,20 @@ public abstract class User {
 
   public User() {}
 
-  public User(int id, String name, String email, String password, UserType userType) {
-    this.id = id;
+  public User(int userId, String name, String email, String password, UserType userType) {
+    this.userId = userId;
     this.name = name;
     this.email = email;
     this.password = password;
     this.userType = userType;
   }
 
-  public int getId() {
-    return id;
+  public int getUserId() {
+    return userId;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public void setUserId(int userId) { //! might not be necessary
+    this.userId = userId;
   }
 
   public String getName() {

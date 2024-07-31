@@ -1,7 +1,7 @@
 package com.finalproject.models;
 public class SurplusFoodAlert {
 
-  private int id;
+  private int surplusFoodAlertId;
   private int userId;
   private String location;
   private CommunicationMethod communicationMethod;
@@ -9,20 +9,20 @@ public class SurplusFoodAlert {
 
   public SurplusFoodAlert() {}
 
-  public SurplusFoodAlert(int id, int userId, String location, CommunicationMethod communicationMethod, String foodPreferences) {  
-    this.id = id;
+  public SurplusFoodAlert(int surplusFoodAlertId, int userId, String location, CommunicationMethod communicationMethod, String foodPreferences) {  
+    this.surplusFoodAlertId = surplusFoodAlertId;
     this.userId = userId;
     this.location = location;
     this.communicationMethod = communicationMethod;
     this.foodPreferences = foodPreferences;
   }
 
-  public int getId() {
-    return id;
+  public int getSurplusFoodAlertId() {
+    return surplusFoodAlertId;
   }   
 
-  public void setId(int id) {
-    this.id = id;
+  public void setSurplusFoodAlertId(int surplusFoodAlertId) {
+    this.surplusFoodAlertId = surplusFoodAlertId;
   }
 
   public int getUserId() {

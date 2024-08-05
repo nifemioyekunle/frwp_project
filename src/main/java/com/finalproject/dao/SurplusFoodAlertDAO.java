@@ -66,6 +66,33 @@ public class SurplusFoodAlertDAO {
     return null;
   }
 
+  public List<SurplusFoodAlert> getAllSurplusFoodAlerts() {
+    PreparedStatement stmt;
+    List<SurplusFoodAlert> allSurplusFoodAlerts = new ArrayList<>();
+
+    try {
+      String sql = "SELECT * FROM SurplusFoodAlerts";
+      stmt = this.connection.prepareStatement(sql);
+      ResultSet rs = stmt.executeQuery(); 
+
+      while (rs.next()) {
+        int surplusFoodAlertId = rs.getInt("surplusFoodAlertId");
+        int userId = rs.getInt("userId");
+        String location = rs.getString("location");
+        String communicationMethodString = rs.getString("communicationMethod");
+        String foodPreferences = rs.getString("foodPreferences"); 
+
+        CommunicationMethod communicationMethod = CommunicationMethod.valueOf(communicationMethodString);
+        SurplusFoodAlert surplusFoodAlert = new SurplusFoodAlert(surplusFoodAlertId, userId, location, communicationMethod, foodPreferences);
+        allSurplusFoodAlerts.add(surplusFoodAlert);
+
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    return allSurplusFoodAlerts;
+  }
+
   public void updateSurplusFoodAlert(SurplusFoodAlert surplusFoodAlert) {
     PreparedStatement stmt;
 

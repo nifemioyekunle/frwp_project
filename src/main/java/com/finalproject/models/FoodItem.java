@@ -48,11 +48,17 @@ public class FoodItem {
     return expirationDate;
   }
 
-  public boolean getSurplusStatus(){//! work on this
+  //! Surplus items are those that are nearing expiration or are in excess of demand. 
+  //! Surplus items are those with
+
+  public boolean getSurplusStatus(){
     return surplusStatus;
   }
 
   public boolean checkSurplusStatus() { //! work on this
+    //? if expiration date less that a week
+
+    
     if (this.quantity > 5) {
       return true;
     } else {

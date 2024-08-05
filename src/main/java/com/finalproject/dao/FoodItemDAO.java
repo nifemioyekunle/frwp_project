@@ -86,6 +86,21 @@ public class FoodItemDAO {
     }
   }
 
+  public void updateFoodItemQuantity(FoodItem foodItem, int quantity) {
+    PreparedStatement stmt;
+
+    try {
+      String sql = "UPDATE FoodItems SET quantity = ? WHERE foodItemId = ?";
+      stmt = this.connection.prepareStatement(sql);
+      
+      stmt.setInt(1, foodItem.getQuantity() - quantity);
+      stmt.setInt(2, foodItem.getfoodItemId());
+    
+    } catch(SQLException ex){
+      ex.printStackTrace();
+    }
+  }
+
   public List<FoodItem> getSurplusFoodItems() {
     PreparedStatement stmt;
     List<FoodItem> surplusFoodItems = new ArrayList<>();

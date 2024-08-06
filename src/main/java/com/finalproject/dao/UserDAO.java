@@ -54,18 +54,22 @@ public class UserDAO {
         String name = rs.getString("name");
         String email = rs.getString("email");
         String password = rs.getString("password");
-        
-        String userType = rs.getString("userType");
-        switch(userType){
-          case "RETAILER":
-           return new Retailer(id, name, email, password);
-          case "CONSUMER":
-            return new Consumer(id, name, email, password);
-          case "CHARITABLE_ORGANIZATION":
-            return new CharitableOrganization(id, name, email, password);
-          default:
-            return null;
-        }
+        User.UserType userType = User.UserType.valueOf(rs.getString("userType"));
+
+        return UserFactory.createUser(userType, id, name, email, password);
+      
+        //* Without UserFactory
+        // String userType = rs.getString("userType");
+        // switch(userType){
+        //   case "RETAILER":
+        //    return new Retailer(id, name, email, password);
+        //   case "CONSUMER":
+        //     return new Consumer(id, name, email, password);
+        //   case "CHARITABLE_ORGANIZATION":
+        //     return new CharitableOrganization(id, name, email, password);
+        //   default:
+        //     return null;
+        // }
       }
     } catch (SQLException ex) {
       ex.printStackTrace();
@@ -87,18 +91,21 @@ public class UserDAO {
         int id = rs.getInt("userId");
         String name = rs.getString("name");
         String password = rs.getString("password");
-        String userType = rs.getString("userType");
-        
-        switch(userType){
-          case "RETAILER":
-           return new Retailer(id, name, email, password);
-          case "CONSUMER":
-            return new Consumer(id, name, email, password);
-          case "CHARITABLE_ORGANIZATION":
-            return new CharitableOrganization(id, name, email, password);
-          default:
-          return null;
-        }
+        User.UserType userType = User.UserType.valueOf(rs.getString("userType"));
+
+        return UserFactory.createUser(userType, id, name, email, password);
+      
+        //* Without UserFactory
+        // switch(userType){
+        //   case "RETAILER":
+        //    return new Retailer(id, name, email, password);
+        //   case "CONSUMER":
+        //     return new Consumer(id, name, email, password);
+        //   case "CHARITABLE_ORGANIZATION":
+        //     return new CharitableOrganization(id, name, email, password);
+        //   default:
+        //   return null;
+        // }
       }
     } catch (SQLException ex) {
       ex.printStackTrace();

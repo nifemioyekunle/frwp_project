@@ -2,6 +2,7 @@ package com.finalproject.models;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Retailer extends User{
 
@@ -11,6 +12,7 @@ public class Retailer extends User{
 
   public Retailer(int id, String name, String email, String password) {
     super(id, name, email, password, UserType.RETAILER);
+    this.inventory
   }
 
   @Override
@@ -36,8 +38,18 @@ public class Retailer extends User{
 
   }
 
-  public void listSurplusFoodItems() {
-    
+  public List<FoodItem> getInventory() {
+    return inventory;
+  }
+
+  public List<FoodItem> listSurplusFoodItems() {
+    if (inventory.isEmpty()) {
+      return Collections.emptyList();
+    }
+
+    return inventory.stream()
+      .filter(FoodItem::checkSurplusStatus)
+      .toList();
   }
 
 }

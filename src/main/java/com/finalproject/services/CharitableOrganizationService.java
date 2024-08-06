@@ -12,6 +12,9 @@ public class CharitableOrganizationService {
   }
 
   public void claimFoodItem(FoodItem foodItem, int quantity) {
+    if (foodItem.getQuantity() < quantity) {
+      throw new IllegalArgumentException("Insufficient quantity of food item");
+    }
     this.FoodItem.updateFoodItemQuantity(foodItem, quantity);
   }
 

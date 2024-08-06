@@ -1,7 +1,10 @@
 package com.finalproject.services;
 
+import java.util.List;
+
 import com.finalproject.dao.FoodItemDAO;
 import com.finalproject.models.FoodItem;
+import com.finalproject.models.Retailer;
 
 public class RetailerService {
 
@@ -11,7 +14,8 @@ public class RetailerService {
     this.foodItemDAO = new FoodItemDAO();
   }
 
-  public void addFoodItem (FoodItem foodItem) {
+  public void addFoodItem (Retailer retailer, FoodItem foodItem) {
+    retailer.addFoodItem(foodItem);
     this.foodItemDAO.addFoodItem(foodItem);
   }
 
@@ -19,7 +23,7 @@ public class RetailerService {
     this.foodItemDAO.updateFoodItem(foodItem);
   }
 
-  public void listSurplusFoodItems() {
-    this.foodItemDAO.getSurplusFoodItems();
+  public List<FoodItem> listSurplusFoodItems(Retailer retailer) {
+    return retailer.listSurplusFoodItems();
   }
 }

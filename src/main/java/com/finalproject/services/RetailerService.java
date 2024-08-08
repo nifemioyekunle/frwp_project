@@ -10,8 +10,8 @@ public class RetailerService {
 
   private FoodItemDAO foodItemDAO;
 
-  public RetailerService() {
-    this.foodItemDAO = new FoodItemDAO();
+  public RetailerService(FoodItemDAO foodItemDAO) {
+    this.foodItemDAO = foodItemDAO;
   }
 
   public void addFoodItem (Retailer retailer, FoodItem foodItem) {
@@ -24,6 +24,6 @@ public class RetailerService {
   }
 
   public List<FoodItem> listSurplusFoodItems(Retailer retailer) {
-    return retailer.listSurplusFoodItems();
+    return this.foodItemDAO.listSurplusFoodItems();
   }
 }

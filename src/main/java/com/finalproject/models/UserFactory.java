@@ -5,7 +5,7 @@ public class UserFactory {
   public static User createUser(User.UserType userType, int id, String name, String email, String password) {
 
     switch (userType) {
-      case RETAILER or RETAILER.toL
+      case RETAILER:
         return new Retailer(id, name, email, password);
       case CONSUMER:
         return new Consumer(id, name, email, password);

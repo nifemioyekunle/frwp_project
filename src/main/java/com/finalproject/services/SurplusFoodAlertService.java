@@ -20,17 +20,17 @@ public class SurplusFoodAlertService {
     surplusFoodAlert.subscribe(); //TODO: implement this
   }
 
-  public void unsubscribeAlert(int userId) {
-    this.surplusFoodAlertDAO.deleteSurplusFoodAlert(userId);
+  public void unsubscribeAlert(SurplusFoodAlert surplusFoodAlert) {
+    this.surplusFoodAlertDAO.deleteSurplusFoodAlert(surplusFoodAlert);
     surplusFoodAlert.unsubscribe(); //TODO: implement this
   }
 
-  public void notifyUsers() { //!WORK ON THIS
+  public void notifyUsers(SurplusFoodAlert surplusFoodAlert) { //!WORK ON THIS
     // List <SurplusFoodAlert> surplusFoodAlerts = this.surplusFoodAlertDAO.getSurplusFoodAlerts();
     // this.surplusFoodAlertDAO.notifyUsers();
 
     for (SurplusFoodAlertObserver observer : observers) {
-      observer.update(); //TODO: implement this
+      observer.update(surplusFoodAlert); //TODO: implement this
     }
   }
 

@@ -6,8 +6,8 @@ import com.finalproject.dao.UserDAO;
 public class UserService {
   private UserDAO userDAO;
 
-  public UserService() {
-    this.userDAO = new UserDAO();
+  public UserService(UserDAO userDAO) {
+    this.userDAO = userDAO;
   }
 
   public void registerUser(User user) {

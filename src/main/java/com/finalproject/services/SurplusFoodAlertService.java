@@ -1,27 +1,28 @@
 package com.finalproject.services;
 
-import com.finalproject.models.SurplusFoodAlert;
-
 import java.util.List;
-
+import java.util.ArrayList;
+import com.finalproject.models.SurplusFoodAlert;
 import com.finalproject.dao.SurplusFoodAlertDAO;
+import com.finalproject.observer.SurplusFoodAlertSubject;
 
-public class SurplusFoodAlertService {
+public class SurplusFoodAlertService implements SurplusFoodAlertSubject {
 
   private SurplusFoodAlertDAO surplusFoodAlertDAO;
   private List<SurplusFoodAlertObserver> observers = new ArrayList<SurplusFoodAlertObserver>();
 
-  public SurplusFoodAlertService() {
+  public SurplusFoodAlertService(SurplusFoodAlertDAO surplusFoodAlertDAO) {
     this.surplusFoodAlertDAO = new SurplusFoodAlertDAO();
   }
 
   public void subscribeAlert(SurplusFoodAlert surplusFoodAlert) {
     this.surplusFoodAlertDAO.addSurplusFoodAlert(surplusFoodAlert);
+    notifyUsers(surplusFoodAlert);
     surplusFoodAlert.subscribe(); //TODO: implement this
   }
 
   public void unsubscribeAlert(SurplusFoodAlert surplusFoodAlert) {
-    this.surplusFoodAlertDAO.deleteSurplusFoodAlert(surplusFoodAlert);
+    this.surplusFoodAlertDAO.deleteSurplusFoodAlert(surplusFoodAlert.getSurplusFoodAlertId());
     surplusFoodAlert.unsubscribe(); //TODO: implement this
   }
 

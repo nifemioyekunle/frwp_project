@@ -12,8 +12,8 @@ public class ConsumerController {
     this.consumerService = new ConsumerService();
   }
 
-  public void purchaseFoodItem(Consumer consumer, FoodItem foodItem) {
-    consumerService.purchaseFoodItem(consumer, foodItem);
+  public void purchaseFoodItem(FoodItem foodItem, int quantity) {
+    consumerService.purchaseFoodItem(foodItem, quantity);
   }
 
 

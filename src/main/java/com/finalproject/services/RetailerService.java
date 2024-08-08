@@ -24,6 +24,6 @@ public class RetailerService {
   }
 
   public List<FoodItem> listSurplusFoodItems(Retailer retailer) {
-    return this.foodItemDAO.listSurplusFoodItems();
+    return this.foodItemDAO.getSurplusFoodItems();
   }
 }

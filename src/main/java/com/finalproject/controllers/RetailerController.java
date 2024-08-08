@@ -17,7 +17,7 @@ public class RetailerController {
     retailerService.updateFoodItem(foodItem);
   } 
 
-  public List<FoodItem> listSurplusFoodItems(Retailer retailer) {
-    return retailerService.listSurplusFoodItems(retailer);
+  public List<FoodItem> listSurplusFoodItems() {
+    return retailerService.listSurplusFoodItems();
   } 
 }

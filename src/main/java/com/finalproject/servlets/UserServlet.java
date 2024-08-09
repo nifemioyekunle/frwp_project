@@ -37,7 +37,7 @@ public class UserServlet extends HttpServlet {
   private void handleRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String userTypeString = request.getParameter("userType");
     User.UserType userType = User.UserType.valueOf(userTypeString.toUpperCase());
-    int id = Integer.parseInt(request.getParameter("id"));
+    // int id = Integer.parseInt(request.getParameter("id"));
     String name = request.getParameter("name");
     String email = request.getParameter("email");
     String password = request.getParameter("password");

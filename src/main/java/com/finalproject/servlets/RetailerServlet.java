@@ -7,11 +7,12 @@ import com.finalproject.models.FoodItem;
 import com.finalproject.services.RetailerService;
 import com.finalproject.dao.FoodItemDAO;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@WebServlet("/retailer")
 public class RetailerServlet extends HttpServlet{
 
   private RetailerService retailerService;
@@ -43,7 +44,9 @@ public class RetailerServlet extends HttpServlet{
     int quantity = Integer.parseInt(request.getParameter("quantity"));
     String expirationDate = request.getParameter("expirationDate");
 
-    FoodItem foodItem = new FoodItem(foodItemId, name, quantity, expirationDate); //! might add retailer id in fooditems too
+    // Boolean surplusStatus = Boolean.parseBoolean(request.getParameter("surplusStatus"));
+
+    FoodItem foodItem = new FoodItem(foodItemId, name, quantity, expirationDate, surplusStatus); //! might add retailer id in fooditems too
     retailerService.addFoodItem(retailer, foodItem);
     response.getWriter().println("Food item added successfully");
   }

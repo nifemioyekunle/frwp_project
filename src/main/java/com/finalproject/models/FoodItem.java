@@ -44,6 +44,11 @@ public class FoodItem {
     this.quantity = quantity;   
   }
 
+  public void setExpirationDate(LocalDate expirationDate) {
+    this.expirationDate = expirationDate;
+    this.surplusStatus = checkSurplusStatus();
+  }
+
   public LocalDate getExpirationDate() {
     return expirationDate;
   }
@@ -52,14 +57,13 @@ public class FoodItem {
   //! Surplus items are those with
 
   public boolean getSurplusStatus(){
-    return surplusStatus;
+    return checkSurplusStatus();
   }
 
   public boolean checkSurplusStatus() { //! work on this
     //? if expiration date less that a week
-
-    
-    if (this.quantity > 5) {
+    LocalDate today = LocalDate.now();
+    if (this.expirationDate.isBefore(today.plusDays(7)) && this.expirationDate.isAfter(today)) {
       return true;
     } else {
       return false;

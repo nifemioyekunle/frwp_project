@@ -1,10 +1,16 @@
 package com.finalproject.servlets;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 import com.finalproject.models.FoodItem;
 import com.finalproject.services.CharitableOrganizationService;
 
+@WebServlet("/charitableOrganization")
 public class CharitableOrganizationServlet extends HttpServlet {
   CharitableOrganizationService charitableOrganizationService;
 
@@ -30,4 +36,5 @@ public class CharitableOrganizationServlet extends HttpServlet {
 
     charitableOrganizationService.claimFoodItem(foodItem, quantity);
     response.getWriter().println("Food item claimed successfully");
+  }
 }

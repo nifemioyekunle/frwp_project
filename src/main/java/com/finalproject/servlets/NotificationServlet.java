@@ -4,6 +4,7 @@ import com.finalproject.services.SurplusFoodAlertService;
 import com.finalproject.dao.SurplusFoodAlertDAO;
 import com.finalproject.observer.EmailAlertObserver;
 import javax.servlet.http.HttpServlet;
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;

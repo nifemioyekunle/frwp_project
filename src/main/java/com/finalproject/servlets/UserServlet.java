@@ -5,6 +5,7 @@ import com.finalproject.services.UserService;
 import com.finalproject.models.User;
 import com.finalproject.models.UserFactory;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

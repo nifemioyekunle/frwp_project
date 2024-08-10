@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 import com.finalproject.dao.FoodItemDAO;
-import com.finalproject.services.ComsumerService;
+import com.finalproject.services.ConsumerService;
 
 @WebServlet("/consumer")
 public class ConsumerServlet extends HttpServlet {

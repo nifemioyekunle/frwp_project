@@ -12,7 +12,6 @@ public class Retailer extends User{
 
   public Retailer(int id, String name, String email, String password) {
     super(id, name, email, password, UserType.RETAILER);
-    this.inventory;
   }
 
   @Override

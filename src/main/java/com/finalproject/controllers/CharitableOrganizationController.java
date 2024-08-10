@@ -6,8 +6,8 @@ import com.finalproject.services.CharitableOrganizationService;
 public class CharitableOrganizationController {
   private CharitableOrganizationService charitableOrganizationService;
 
-  public CharitableOrganizationController() {
-    this.charitableOrganizationService = new CharitableOrganizationService();
+  public CharitableOrganizationController(CharitableOrganizationService charitableOrganizationService) {
+    this.charitableOrganizationService = charitableOrganizationService;
   }
 
   public void claimFoodItem(FoodItem foodItem, int quantity) {

@@ -1,12 +1,13 @@
 package com.finalproject.controllers;
 
+import com.finalproject.dao.UserDAO;
 import com.finalproject.services.UserService;
 
 public class UserController {
   private UserService userService;
 
-  public UserController() {
-    this.userService = new UserService();
+  public UserController(UserService userService) {
+    this.userService = userService;
   }
 
   public void registerUser(User.UserType userType, int id, String name, String email, String password) {

@@ -1,12 +1,13 @@
 package com.finalproject.controllers;
 
+import com.finalproject.dao.FoodItemDAO;
 import com.finalproject.services.RetailerService;
 
 public class RetailerController {
   private RetailerService retailerService;
 
-  public RetailerController() {
-    this.retailerService = new RetailerService();
+  public RetailerController(RetailerService retailerService) {
+    this.retailerService = retailerService;
   }
   
   public void addFoodItem(Retailer retailer, FoodItem foodItem) {

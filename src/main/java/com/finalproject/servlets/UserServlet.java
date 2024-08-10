@@ -3,7 +3,7 @@ package com.finalproject.servlets;
 import com.finalproject.dao.UserDAO;
 import com.finalproject.services.UserService;
 import com.finalproject.models.User;
-import com.finalproject.factories.UserFactory;
+import com.finalproject.models.UserFactory;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;

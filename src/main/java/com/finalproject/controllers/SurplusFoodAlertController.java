@@ -1,12 +1,13 @@
 package com.finalproject.controllers;
 
+import com.finalproject.dao.SurplusFoodAlertDAO;
 import com.finalproject.services.SurplusFoodAlertService;
 
 public class SurplusFoodAlertController {
   private SurplusFoodAlertService surplusFoodAlertService;
 
-  public SurplusFoodAlertController() {
-    this.surplusFoodAlertService = new SurplusFoodAlertService();
+  public SurplusFoodAlertController(SurplusFoodAlertService surplusFoodAlertService) {
+    this.surplusFoodAlertService = surplusFoodAlertService;
   }
 
   public void subscribeAlert(SurplusFoodAlert surplusFoodAlert) {

@@ -7,7 +7,7 @@ public class ConsumerService {
   private FoodItemDAO foodItemDAO;
 
   public ConsumerService(FoodItemDAO foodItemDAO) {
-    this.foodItem = foodItemDAO;
+    this.foodItemDAO = foodItemDAO;
   }
 
   public void purchaseFoodItem(FoodItem foodItem, int quantity) { //TODO work on this

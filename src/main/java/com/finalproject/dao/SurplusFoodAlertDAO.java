@@ -1,6 +1,8 @@
 package com.finalproject.dao;
 
 
+import java.util.List;
+import java.util.ArrayList;
 import com.finalproject.models.CommunicationMethod;
 import com.finalproject.models.SurplusFoodAlert;
 import java.sql.PreparedStatement;

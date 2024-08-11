@@ -2,6 +2,7 @@ package com.finalproject.servlets;
 
 import javax.servlet.http.HttpServlet;
 
+import java.util.List
 import com.finalproject.models.Retailer;
 import com.finalproject.models.FoodItem;
 import com.finalproject.services.RetailerService;
@@ -26,13 +27,21 @@ public class RetailerServlet extends HttpServlet{
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String action = request.getParameter("action");
-    if ("addFoodItem".equals(action)) {
-      handleAddFoodItem(request, response);
-    } else if ("updateFoodItem".equals(action)) {
-      handleUpdateFoodItem(request, response);
-    } else if ("listSurplusFoodItems".equals(action)) {
-      handleListSurplusFoodItems(request, response);
-    }
+    switch (action) {
+      case "addFoodItem":
+        handleAddFoodItem(request, response);
+        break;
+      case "updateFoodItem":
+        handleUpdateFoodItem(request, response);
+        break;
+      case "listSurplusFoodItems":
+        handleListSurplusFoodItems(request, response);
+        break;
+      default:
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.getWriter().println("Unknown action");
+        break;
+  }
   }
 
   private void handleAddFoodItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

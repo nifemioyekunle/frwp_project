@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.finalproject.models.SurplusFoodAlert;
 import com.finalproject.dao.SurplusFoodAlertDAO;
 import com.finalproject.observer.SurplusFoodAlertSubject;
+import com.finalproject.observer.SurplusFoodAlertObserver;
 
 public class SurplusFoodAlertService implements SurplusFoodAlertSubject {
 

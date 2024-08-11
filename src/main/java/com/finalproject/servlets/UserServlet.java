@@ -26,12 +26,16 @@ public class UserServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String action = request.getParameter("action");
-    if ("register".equals(action)) {
-      handleRegister(request, response);
-    } else if ("login".equals(action)) {
-      handleLogin(request, response);
-    } else if ("logout".equals(action)) {
-      handleLogout(request, response);
+    switch (action) {
+      case "register":
+        handleRegister(request, response);
+        break;
+      case "login":
+        handleLogin(request, response);
+        break;
+      case "logout":
+        handleLogout(request, response);
+        break;
     }
   }
 

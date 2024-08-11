@@ -23,7 +23,7 @@ public class RetailerService {
     this.foodItemDAO.updateFoodItem(foodItem);
   }
 
-  public List<FoodItem> listSurplusFoodItems(Retailer retailer) {
+  public List<FoodItem> listSurplusFoodItems() {
     return this.foodItemDAO.getSurplusFoodItems();
   }
 }

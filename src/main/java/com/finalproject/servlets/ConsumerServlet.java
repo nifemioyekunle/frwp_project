@@ -9,6 +9,7 @@ import java.io.IOException;
 
 
 import com.finalproject.dao.FoodItemDAO;
+import com.finalproject.models.FoodItem;
 import com.finalproject.services.ConsumerService;
 
 @WebServlet("/consumer")
@@ -34,7 +35,8 @@ public class ConsumerServlet extends HttpServlet {
   private void handlePurchaseFoodItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     int foodItemId = Integer.parseInt(request.getParameter("foodItemId"));
     int quantity = Integer.parseInt(request.getParameter("quantity"));
-    consumerService.purchaseFoodItems(foodItemId, quantity);
+    FoodItem foodItem = consumerService.getFoodItemById(foodItemId);
+    consumerService.purchaseFoodItems(foodItem, quantity);
     response.getWriter().println("Food items purchased successfully");
   }
 

@@ -8,14 +8,14 @@ public class CharitableOrganizationService {
   private FoodItemDAO foodItemDAO;
 
   public CharitableOrganizationService(FoodItemDAO foodItemDAO) {
-    this.FoodItem = foodItemDAO;
+    this.foodItemDAO = foodItemDAO;
   }
 
   public void claimFoodItem(FoodItem foodItem, int quantity) { //TODO work on this
     if (foodItem.getQuantity() < quantity) {
       throw new IllegalArgumentException("Insufficient quantity of food item");
     }
-    this.FoodItem.updateFoodItemQuantity(foodItem, quantity);
+    this.foodItemDAO.updateFoodItemQuantity(foodItem, quantity);
   }
 
   

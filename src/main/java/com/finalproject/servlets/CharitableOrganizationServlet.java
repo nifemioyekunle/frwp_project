@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.finalproject.dao.FoodItemDAO;
 import com.finalproject.models.FoodItem;
 import com.finalproject.services.CharitableOrganizationService;
 
@@ -17,7 +18,8 @@ public class CharitableOrganizationServlet extends HttpServlet {
   @Override
   public void init() throws ServletException {
     super.init();
-    charitableOrganizationService = new CharitableOrganizationService();
+    
+    charitableOrganizationService = new CharitableOrganizationService(new FoodItemDAO());
   }
 
   @Override

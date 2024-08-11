@@ -14,7 +14,7 @@ public class ConsumerService {
     if (foodItem.getQuantity() < quantity) {
       throw new IllegalArgumentException("Insufficient quantity of food item");
     }
-    this.foodItem.updateFoodItemQuantity(foodItem, quantity);
+    this.foodItemDAO.updateFoodItemQuantity(foodItem, quantity);
   }
 }
 

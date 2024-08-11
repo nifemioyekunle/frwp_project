@@ -2,6 +2,12 @@ package com.finalproject.models;
 
 public abstract class User {
 
+  public enum UserType {
+    RETAILER, 
+    CONSUMER, 
+    CHARITABLE_ORGANIZATION
+  }
+
   private int userId;
   private String name;
   private String email;

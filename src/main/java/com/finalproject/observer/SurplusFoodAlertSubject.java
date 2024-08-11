@@ -1,6 +1,8 @@
 package com.finalproject.observer;
 
-public class SurplusFoodAlertSubject {
+import com.finalproject.models.SurplusFoodAlert;
+
+public interface SurplusFoodAlertSubject {
   
   public void addObserver(SurplusFoodAlertObserver observer);
 

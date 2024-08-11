@@ -1,7 +1,7 @@
 package com.finalproject.dao;
 
 import com.finalproject.models.User;
-import com.finalproject.models.UserType;
+import com.finalproject.models.UserFactory;
 import com.finalproject.models.Retailer;
 import com.finalproject.models.CharitableOrganization;
 import com.finalproject.models.Consumer;

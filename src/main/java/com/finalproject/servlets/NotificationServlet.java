@@ -2,7 +2,7 @@ package com.finalproject.servlets;
 
 import com.finalproject.services.SurplusFoodAlertService;
 import com.finalproject.dao.SurplusFoodAlertDAO;
-import com.finalproject.observer.EmailAlertObserver;
+import com.finalproject.observer.SurplusFoodAlertObserver;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ public class NotificationServlet extends HttpServlet{
   public void init() throws ServletException {
     super.init();
     surplusFoodAlertService = new SurplusFoodAlertService(new SurplusFoodAlertDAO());
-    surplusFoodAlertService.addObserver(new EmailAlertObserver());
+    surplusFoodAlertService.addObserver(new SurplusFoodAlertObserver());
   }
 
   @Override

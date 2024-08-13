@@ -46,7 +46,7 @@ public class UserServlet extends HttpServlet {
     String name = request.getParameter("name");
     String email = request.getParameter("email");
     String password = request.getParameter("password");
-    User user = UserFactory.createUser(userType, id, name, email, password);
+    User user = UserFactory.createUser(userType, null, name, email, password);
     userService.registerUser(user);
     response.getWriter().println("Registration successful");
   }
@@ -62,5 +62,10 @@ public class UserServlet extends HttpServlet {
       response.getWriter().println("Invalid email or password");
     }
     response.getWriter().println("Login successful");
+  }
+  
+    private void handleLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    request.getSession().invalidate();
+    response.getWriter().println("Logout successful");
   }
 }

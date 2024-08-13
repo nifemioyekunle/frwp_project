@@ -18,7 +18,7 @@ public class NotificationServlet extends HttpServlet{
   public void init() throws ServletException {
     super.init();
     surplusFoodAlertService = new SurplusFoodAlertService(new SurplusFoodAlertDAO());
-    surplusFoodAlertService.addObserver(new SurplusFoodAlertObserver());
+    surplusFoodAlertService.addObserver(new SurplusFoodAlertObserver() {});
   }
 
   @Override

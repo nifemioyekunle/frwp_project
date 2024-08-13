@@ -1,6 +1,8 @@
 package com.finalproject.controllers;
 
-import com.finalproject.dao.UserDAO;
+//import com.finalproject.dao.UserDAO;
+import com.finalproject.models.User;
+import com.finalproject.models.UserFactory;
 import com.finalproject.services.UserService;
 
 public class UserController {
@@ -17,9 +19,10 @@ public class UserController {
 
   public User loginUser(String email, String password) { //TODO update service
     User user = userService.loginUser(email, password);
+    return user;
   }
 
-  public void logoutUser() {
-    userService.logoutUser();
+  public void logoutUser(User user) {
+    userService.logoutUser(user);
   }
 }

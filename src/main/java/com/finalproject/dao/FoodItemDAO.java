@@ -43,7 +43,7 @@ public class FoodItemDAO {
     }
   }
 
-  public FoodItem getFoodItemBId(int id) {
+  public FoodItem getFoodItemById(int id) {
     PreparedStatement stmt;
     // FoodItem foodItem = new FoodItem(); 
 

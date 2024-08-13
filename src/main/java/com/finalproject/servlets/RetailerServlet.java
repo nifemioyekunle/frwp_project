@@ -2,7 +2,7 @@ package com.finalproject.servlets;
 
 import javax.servlet.http.HttpServlet;
 
-import java.util.List
+import java.util.List;
 import com.finalproject.models.Retailer;
 import com.finalproject.models.FoodItem;
 import com.finalproject.services.RetailerService;
@@ -17,11 +17,13 @@ import java.io.IOException;
 public class RetailerServlet extends HttpServlet{
 
   private RetailerService retailerService;
+  private FoodItemDAO foodItemDAO;
 
   @Override
   public void init() throws ServletException {
     super.init();
-    retailerService = new RetailerService(new FoodItemDAO());
+    foodItemDAO = new FoodItemDAO();
+    retailerService = new RetailerService(foodItemDAO);
   }
 
   @Override
@@ -46,6 +48,7 @@ public class RetailerServlet extends HttpServlet{
 
   private void handleAddFoodItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     int retailerId = Integer.parseInt(request.getParameter("retailerId"));
+    FoodItem foodItem = foodItemDAO
     Retailer retailer = retailerService.getRetailerById(retailerId); //!tweak food item and user daos
     
     int foodItemId = Integer.parseInt(request.getParameter("foodItemId"));

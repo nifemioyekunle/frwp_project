@@ -16,11 +16,13 @@ import com.finalproject.services.ConsumerService;
 public class ConsumerServlet extends HttpServlet {
 
   private ConsumerService consumerService;
+  private FoodItemDAO foodItemDAO;
 
   @Override
   public void init() throws ServletException {
     super.init();
-    consumerService = new ConsumerService(new FoodItemDAO());
+    foodItemDAO = new FoodItemDAO();
+    consumerService = new ConsumerService(foodItemDAO);
   }
 
 
@@ -35,8 +37,8 @@ public class ConsumerServlet extends HttpServlet {
   private void handlePurchaseFoodItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     int foodItemId = Integer.parseInt(request.getParameter("foodItemId"));
     int quantity = Integer.parseInt(request.getParameter("quantity"));
-    FoodItem foodItem = consumerService.getFoodItemById(foodItemId);
-    consumerService.purchaseFoodItems(foodItem, quantity);
+    FoodItem foodItem = foodItemDAO.getFoodItemById(foodItemId);
+    consumerService.purchaseFoodItem(foodItem, quantity);
     response.getWriter().println("Food items purchased successfully");
   }
 

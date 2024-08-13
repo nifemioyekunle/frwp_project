@@ -18,7 +18,7 @@ public class SurplusFoodAlertService implements SurplusFoodAlertSubject {
 
   public void subscribeAlert(SurplusFoodAlert surplusFoodAlert) {
     this.surplusFoodAlertDAO.addSurplusFoodAlert(surplusFoodAlert);
-    notifyUsers(surplusFoodAlert);
+    notifyObservers(surplusFoodAlert);
     surplusFoodAlert.subscribe(); //TODO: implement this
   }
 
@@ -28,7 +28,7 @@ public class SurplusFoodAlertService implements SurplusFoodAlertSubject {
   }
 
   @Override
-  public void notifyUsers(SurplusFoodAlert surplusFoodAlert) { //!WORK ON THIS
+  public void notifyObservers(SurplusFoodAlert surplusFoodAlert) { //!WORK ON THIS
     // List <SurplusFoodAlert> surplusFoodAlerts = this.surplusFoodAlertDAO.getSurplusFoodAlerts();
     // this.surplusFoodAlertDAO.notifyUsers();
 

@@ -15,15 +15,16 @@ public class UserService {
     user.register(); //TODO implement this
   }
 
-  public User loginUser(Sting email, String password) { //TODO change parameters to email and password
-    User registeredUser = userDAO.getUserByEmail(user.getEmail());
+  public User loginUser(String email, String password) { //TODO change parameters to email and password
+    User registeredUser = userDAO.getUserByEmail(email);
 
     if (registeredUser != null && registeredUser.getPassword().equals(password)) {
-      user.login(); //TODO implement this
+      registeredUser.login(); //TODO implement this
       System.out.println("Login successful!");
-      return user;
+      return registeredUser;
     } else {
       System.out.println("Invalid email or password. Please try again.");
+      return null;
     }
   }
 

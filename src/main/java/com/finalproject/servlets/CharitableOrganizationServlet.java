@@ -13,13 +13,14 @@ import com.finalproject.services.CharitableOrganizationService;
 
 @WebServlet("/charitableOrganization")
 public class CharitableOrganizationServlet extends HttpServlet {
-  CharitableOrganizationService charitableOrganizationService;
+  private CharitableOrganizationService charitableOrganizationService;
+  private FoodItemDAO foodItemDAO;
 
   @Override
   public void init() throws ServletException {
     super.init();
-    
-    charitableOrganizationService = new CharitableOrganizationService(new FoodItemDAO());
+    foodItemDAO = new FoodItemDAO();
+    charitableOrganizationService = new CharitableOrganizationService(foodItemDAO);
   }
 
   @Override
@@ -34,7 +35,7 @@ public class CharitableOrganizationServlet extends HttpServlet {
     int foodItemId = Integer.parseInt(request.getParameter("foodItemId"));
     int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-    FoodItem foodItem = charitableOrganizationService.getFoodItemById(foodItemId);
+    FoodItem foodItem = foodItemDAO.getFoodItemById(foodItemId);
 
     charitableOrganizationService.claimFoodItem(foodItem, quantity);
     response.getWriter().println("Food item claimed successfully");

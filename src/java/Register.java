@@ -14,7 +14,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.sql.ResultSet;
 
-
 @WebServlet("/Register")
 public class Register extends HttpServlet {
     @Override
@@ -35,7 +34,8 @@ public class Register extends HttpServlet {
 
             // Get connection using the DatabaseConnection class
             conn = DatabaseConnection.getInstance().getConnection();
-            
+
+            // Insert user into the database
             pstmt = conn.prepareStatement("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
             pstmt.setString(1, username);
             pstmt.setString(2, email);
@@ -43,24 +43,11 @@ public class Register extends HttpServlet {
             pstmt.setString(4, userType);
 
             int rowsInserted = pstmt.executeUpdate();
-            
-            pstmt = conn.prepareStatement("SELECT user_id FROM users WHERE username = ?");
-            ResultSet rs = pstmt.executeQuery();
-            int userId = rs.getInt("user_id");
-            
-            
+
+            // Check if the user was successfully inserted
             if (rowsInserted > 0) {
-                // Redirect user based on userType
-                if ("consumer".equals(userType)) {
-                    response.sendRedirect("Consumers.jsp");
-                } else if ("retailer".equals(userType)) {
-                    request.getSession().setAttribute("userId", userId);
-                    response.sendRedirect("Retailers.jsp");
-                } else if ("charitableOrganization".equals(userType)) {
-                    response.sendRedirect("CharitableOrganizations.jsp");
-                } else {
-                    out.println("Unknown user type");
-                }
+                // Redirect to the login page (index.html)
+                response.sendRedirect("index.html");
             } else {
                 out.println("Failed to register user.");
             }
@@ -74,6 +61,7 @@ public class Register extends HttpServlet {
             // Close resources
             try {
                 if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

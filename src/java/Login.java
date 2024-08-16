@@ -61,7 +61,10 @@ public class Login extends HttpServlet {
                     request.getSession().setAttribute("userId", rs.getInt("user_id"));
                     response.sendRedirect("Retailers.jsp");
                 } else if ("charitableOrganization".equals(userType)) {
-                    response.sendRedirect("CharitableOrganizations.jsp");
+                     List<InventoryItem> inventoryItems = InventoryDAO.getAllInventoryItems();
+                    request.setAttribute("inventoryItems", inventoryItems);
+                     RequestDispatcher dispatcher = request.getRequestDispatcher("CharitableOrganization.jsp");
+                    dispatcher.forward(request, response);
                 } else {
                     out.println("Unknown user type");
                 }

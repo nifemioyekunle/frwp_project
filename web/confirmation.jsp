@@ -12,6 +12,6 @@
 <body>
     <h1>Purchase Successful</h1>
     <p>Thank you for your purchase!</p>
-    <a href="consumer.jsp">Return to items</a>
+    <a href="<%= request.getContextPath() %>/PurchaseServlet">Return to items</a>
 </body>
 </html>

@@ -53,6 +53,20 @@ public class RetailersDAOImpl implements RetailersDAO{
         }
         return null;
     }
+    
+    public int getRetailerIdByUserId(int userid) {
+        String query = "SELECT retailer_id FROM retailers WHERE user_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, userid);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getInt("retailer_id");
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
 
     @Override
     public List<Retailers> getAllRetailers() {

@@ -3,7 +3,9 @@
     Created on : 08-Aug-2024, 2:19:03 pm
     Author     : Denis
 --%>
-<%@ page import="JavaCode.SurplusFoodItem" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="JavaCode.InventoryItem" %>
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -63,6 +65,12 @@
             .purchase-button:hover {
                 background-color: #218838;
             }
+            
+            .disabled {
+                opacity: .3;
+            }
+            
+    
         </style>
     </head>
     <body>
@@ -80,21 +88,27 @@
                 <tbody>
                     <%
                         // Retrieve the list of surplus items from the request
-                        List<SurplusFoodItem> items = (List<SurplusFoodItem>) request.getAttribute("surplusInventoryItems");
+                        List<InventoryItem> items = (List<InventoryItem>) request.getAttribute("inventoryItems");
 
                         // Check if the list is not null and contains items
+
+                        
                         if (items != null && !items.isEmpty()) {
-                            for (SurplusFoodItem item : items) {
+                            for (InventoryItem item : items) {
                     %>
                     <tr>
                         <td><%= item.getItemName() %></td>
                         <td><%= item.getQuantity() %></td>
-                        <td>$<%= item.getDiscountedPrice() %></td>
                         <td>
                             <form action="PurchaseServlet" method="post">
-                                <input type="hidden" name="itemId" value="<%= item.getSurplusId() %>">
+                                <input type="hidden" name="itemId" value="<%= item.getItemId() %>">
                                 <input type="hidden" name="quantity" value="1">
+                                <% if(item.getQuantity() > 0) { %>
                                 <button type="submit" class="purchase-button">Purchase</button>
+                                <% } else { %>
+                                <button type="submit" class="disabled purchase-button" disabled>Purchase</button>
+                                <% } %>
+                                
                             </form>
                         </td>
                     </tr>

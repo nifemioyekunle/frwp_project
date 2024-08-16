@@ -1,4 +1,6 @@
 import JavaCode.DatabaseConnection;
+import JavaCode.InventoryDAO;
+import JavaCode.InventoryItem;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -13,6 +15,8 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -49,8 +53,12 @@ public class Login extends HttpServlet {
             if (rs.next()) {
                 // User exists, redirect based on user type
                 if ("consumer".equals(userType)) {
-                    response.sendRedirect("Consumers.jsp");
+                    List<InventoryItem> inventoryItems = InventoryDAO.getAllInventoryItems();
+                    request.setAttribute("inventoryItems", inventoryItems);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Consumers.jsp");
+                    dispatcher.forward(request, response);
                 } else if ("retailer".equals(userType)) {
+                    request.getSession().setAttribute("userId", rs.getInt("user_id"));
                     response.sendRedirect("Retailers.jsp");
                 } else if ("charitableOrganization".equals(userType)) {
                     response.sendRedirect("CharitableOrganizations.jsp");

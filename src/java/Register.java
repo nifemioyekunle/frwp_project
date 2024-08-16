@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.sql.ResultSet;
+
 
 @WebServlet("/Register")
 public class Register extends HttpServlet {
@@ -41,11 +43,18 @@ public class Register extends HttpServlet {
             pstmt.setString(4, userType);
 
             int rowsInserted = pstmt.executeUpdate();
+            
+            pstmt = conn.prepareStatement("SELECT user_id FROM users WHERE username = ?");
+            ResultSet rs = pstmt.executeQuery();
+            int userId = rs.getInt("user_id");
+            
+            
             if (rowsInserted > 0) {
                 // Redirect user based on userType
                 if ("consumer".equals(userType)) {
                     response.sendRedirect("Consumers.jsp");
                 } else if ("retailer".equals(userType)) {
+                    request.getSession().setAttribute("userId", userId);
                     response.sendRedirect("Retailers.jsp");
                 } else if ("charitableOrganization".equals(userType)) {
                     response.sendRedirect("CharitableOrganizations.jsp");

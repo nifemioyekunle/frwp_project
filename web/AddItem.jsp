@@ -72,7 +72,7 @@
 
         <!-- Form to add item -->
         <form action="InventoryServlet" method="post">
-            <input type="hidden" name="action" value="additem">
+            <input type="hidden" name="action" value="addItem">
             <label for="itemName">Item Name:</label>
             <input type="text" id="itemName" name="itemName" required>
 
@@ -82,8 +82,8 @@
             <label for="expirationDate">Expiration Date:</label>
             <input type="date" id="expirationDate" name="expirationDate" required>
 
-            <label for="retailerId">Retailer ID:</label>
-            <input type="number" id="retailerId" name="retailerId" required>
+            <!--<label for="retailerId">Retailer ID:</label>-->
+            <input type="hidden" id="retailerId" name="retailerId" value="2">
 
             <button type="submit">Add Item</button>
         </form>

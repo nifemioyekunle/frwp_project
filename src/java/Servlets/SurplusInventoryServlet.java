@@ -24,34 +24,45 @@ public class SurplusInventoryServlet extends HttpServlet {
             // Set the surplus inventory data as a request attribute
             request.setAttribute("surplusInventoryItems", surplusInventoryItems);
 
-            // Forward the request to the consumer.jsp page to display items for purchase
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/consumer.jsp");
+            // Forward the request to the Consumer.jsp page to display items for purchase
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Consumers.jsp");
             dispatcher.forward(request, response);
+
         } catch (SQLException ex) {
-            ex.printStackTrace();
-
-            // Handle any SQL exceptions gracefully by forwarding to an error page
-            request.setAttribute("errorMessage", "An error occurred while retrieving surplus inventory data.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-            dispatcher.forward(request, response);
+            // Handle SQL exceptions specifically
+            handleException(request, response, "An error occurred while retrieving surplus inventory data.", ex);
         } catch (Exception ex) {
-            ex.printStackTrace();
-
-            // Catch any other exceptions and forward to a general error page
-            request.setAttribute("errorMessage", "An unexpected error occurred.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-            dispatcher.forward(request, response);
+            // Handle any other unexpected exceptions
+            handleException(request, response, "An unexpected error occurred.", ex);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Optionally handle POST requests by delegating to doGet
+        // Delegate POST requests to the doGet method for simplicity
         doGet(request, response);
     }
 
     @Override
     public String getServletInfo() {
         return "SurplusInventoryServlet handles retrieving and displaying surplus inventory items.";
+    }
+
+    /**
+     * Handles exceptions by logging the error and forwarding to the error page.
+     *
+     * @param request The HttpServletRequest object.
+     * @param response The HttpServletResponse object.
+     * @param message The error message to display.
+     * @param ex The exception that was caught.
+     * @throws ServletException If a servlet-specific error occurs.
+     * @throws IOException If an I/O error occurs.
+     */
+    private void handleException(HttpServletRequest request, HttpServletResponse response, String message, Exception ex)
+            throws ServletException, IOException {
+        ex.printStackTrace(); // Log the exception details to the server logs
+        request.setAttribute("errorMessage", message); // Set the error message as a request attribute
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp"); // Forward to the error page
+        dispatcher.forward(request, response);
     }
 }
